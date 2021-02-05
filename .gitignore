@@ -1,0 +1,10 @@
+/bin/
+*.class
+
+.classpath
+.project
+.settings/
+
+fj21-jdbc/.classpath
+fj21-jdbc/.project
+fj21-jdbc/.settings/
