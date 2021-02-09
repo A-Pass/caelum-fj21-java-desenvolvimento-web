@@ -29,15 +29,14 @@ td, th {
 <body>
 	<c:import url="cabecalho.jsp" />
 
-	<jsp:useBean id="dao" class="br.com.caelum.agenda.dao.ContatoDAO"></jsp:useBean>
-
-	<display:table name="${dao.lista}" id="tblContato">
+	<display:table name="${contatos}" id="tblContato">
 		<display:column title="Nome" property="nome" />
 		<display:column title="E-mail" property="email" />
 		<display:column title="Endereco" property="endereco" />
 		<display:column title="Data de Nascimento">
 			<fmt:formatDate value="${tblContato.dataNascimento.time}" pattern="dd/MM/yyyy" />
 		</display:column>
+		<display:column title="Opções"><a href="mvc?logica=RemoveContatoLogica&id=${tblContato.id}">Remover</a></display:column>
 	</display:table>
 
 	<c:import url="rodape.jsp" />
