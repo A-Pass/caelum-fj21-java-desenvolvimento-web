@@ -36,7 +36,10 @@ td, th {
 		<display:column title="Data de Nascimento">
 			<fmt:formatDate value="${tblContato.dataNascimento.time}" pattern="dd/MM/yyyy" />
 		</display:column>
-		<display:column title="Opções"><a href="mvc?logica=RemoveContatoLogica&id=${tblContato.id}">Remover</a></display:column>
+		<display:column title="Opções">
+			<a href="mvc?logica=RemoveContatoLogica&id=${tblContato.id}">Remover</a>
+			<a href="mvc?logica=MostraContatoLogica&id=${tblContato.id}">Alterar</a>
+		</display:column>
 	</display:table>
 
 	<c:import url="rodape.jsp" />

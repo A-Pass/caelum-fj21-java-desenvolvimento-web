@@ -65,10 +65,10 @@ public class ContatoDAO {
 		}
 	}
 
-	public Contato pesquisar(int id) {
+	public Contato pesquisar(long id) {
 		try {
 			PreparedStatement stmt = this.connection.prepareStatement("select * from contatos where id = ?");
-			stmt.setInt(1, id);
+			stmt.setLong(1, id);
 			ResultSet rs = stmt.executeQuery();
 			Contato contato = null;
 			if (rs.next()) {
