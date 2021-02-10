@@ -18,23 +18,23 @@
 
 	<c:import url="cabecalho.jsp" />
 
-	<form action="mvc?logica=AlteraContatoLogica" method="POST">
+	<form action="${contato == null ? "mvc?logica=AdicionaContatoLogica" : "mvc?logica=AlteraContatoLogica"}" method="POST">
 		<input type="hidden" value="${contato.id}" name="id"/>
 	
 		<div>
-			<label>Nome:<input type="text" name="nome" value="${contato.nome}"/></label>
+			<label>Nome:<input type="text" name="nome" value="${contato != null ? contato.nome : null}"/></label>
 		</div>
 
 		<div>
-			<label>E-mail:<input type="text" name="email" value="${contato.email}"/></label>
+			<label>E-mail:<input type="text" name="email" value="${contato != null ? contato.email : null}"/></label>
 		</div>
 
 		<div>
-			<label>Endereço: <input type="text" name="endereco" value="${contato.endereco}"/></label>
+			<label>Endereço: <input type="text" name="endereco" value="${contato != null ? contato.endereco : null}"/></label>
 		</div>
 
 		<div>
-			<label>Data de Nascimento: <caelum:campoData id="dataNascimento" value="${contato.dataNascimento.time}" />
+			<label>Data de Nascimento: <caelum:campoData id="dataNascimento" value="${contato != null ? contato.dataNascimento.time : null}" />
 			</label>
 		</div>
 

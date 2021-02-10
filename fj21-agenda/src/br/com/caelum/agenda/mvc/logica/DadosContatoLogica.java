@@ -6,17 +6,19 @@ import javax.servlet.http.HttpServletResponse;
 import br.com.caelum.agenda.dao.ContatoDAO;
 import br.com.caelum.agenda.modelo.Contato;
 
-public class MostraContatoLogica implements Logica {
+public class DadosContatoLogica implements Logica {
 
 	@Override
 	public String executa(HttpServletRequest req, HttpServletResponse resp) throws Exception {
-long id = Long.parseLong(req.getParameter("id"));
+		String idTxt = req.getParameter("id");
+		Contato contato = null;
 		
-		Contato contato = new ContatoDAO().pesquisar(id);
+		if(idTxt != null) {
+			contato = new ContatoDAO().pesquisar(Long.parseLong(idTxt));
+			req.setAttribute("contato", contato);
+		}
 		
-		req.setAttribute("contato", contato);
-		
-		return "mostra-contato.jsp";
+		return "WEB-INF/jsp/dados-contato.jsp";
 	}
 
 }

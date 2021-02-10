@@ -29,6 +29,8 @@ td, th {
 <body>
 	<c:import url="cabecalho.jsp" />
 
+	<a href="mvc?logica=DadosContatoLogica">Novo contato</a>
+	
 	<display:table name="${contatos}" id="tblContato">
 		<display:column title="Nome" property="nome" />
 		<display:column title="E-mail" property="email" />
@@ -38,7 +40,7 @@ td, th {
 		</display:column>
 		<display:column title="Opções">
 			<a href="mvc?logica=RemoveContatoLogica&id=${tblContato.id}">Remover</a>
-			<a href="mvc?logica=MostraContatoLogica&id=${tblContato.id}">Alterar</a>
+			<a href="mvc?logica=DadosContatoLogica&id=${tblContato.id}">Alterar</a>
 		</display:column>
 	</display:table>
 
