@@ -1,5 +1,7 @@
 package br.com.caelum.agenda.mvc.logica;
 
+import java.sql.Connection;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -14,7 +16,7 @@ public class DadosContatoLogica implements Logica {
 		Contato contato = null;
 		
 		if(idTxt != null) {
-			contato = new ContatoDAO().pesquisar(Long.parseLong(idTxt));
+			contato = new ContatoDAO((Connection) req.getAttribute("conexao")).pesquisar(Long.parseLong(idTxt));
 			req.setAttribute("contato", contato);
 		}
 		

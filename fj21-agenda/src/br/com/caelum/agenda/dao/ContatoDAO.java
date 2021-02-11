@@ -15,8 +15,8 @@ import br.com.caelum.agenda.factory.ConnectionFactory;
 public class ContatoDAO {
 	private Connection connection;
 
-	public ContatoDAO() {
-		this.connection = new ConnectionFactory().getConnection();
+	public ContatoDAO(Connection connection) {
+		this.connection = connection;
 	}
 
 	public void adiciona(Contato contato) {
@@ -98,23 +98,23 @@ public class ContatoDAO {
 
 	public void altera(Contato contato) {
 		try {
-			PreparedStatement stmt = this.connection
-					.prepareStatement("update contatos set nome = ?, email = ?, endereco = ?, dataNascimento = ? where id = ?");
+			PreparedStatement stmt = this.connection.prepareStatement(
+					"update contatos set nome = ?, email = ?, endereco = ?, dataNascimento = ? where id = ?");
 			stmt.setString(1, contato.getNome());
 			stmt.setString(2, contato.getEmail());
 			stmt.setString(3, contato.getEndereco());
 			stmt.setDate(4, new Date(contato.getDataNascimento().getTimeInMillis()));
 			stmt.setLong(5, contato.getId());
-			
+
 			stmt.execute();
-			
+
 			stmt.close();
-			
+
 		} catch (SQLException e) {
 			throw new DAOException(e);
 		}
 	}
-	
+
 	public void remove(Contato contato) {
 		try {
 			PreparedStatement stmt = this.connection.prepareStatement("delete from contatos where id = ?");
