@@ -5,6 +5,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Lista de terefas</title>
+
+<link rel="stylesheet" href="<c:url value="/resources/css/tarefas.css" />" />
+
 <script src="<c:url value="/resources/js/jquery-3.5.1.min.js" />"></script>
 
 <script>
@@ -28,11 +31,11 @@ function removeTarefa(id) {
 <table>
 	<thead>
 		<tr>
-			<td>Id</td>
-			<td>Descrição</td>
-			<td>Finalizado?</td>
-			<td>Data de finalização</td>
-			<td>Opções</td>
+			<th>Id</th>
+			<th>Descrição</th>
+			<th>Finalizado?</th>
+			<th>Data de finalização</th>
+			<th>Opções</th>
 		</tr>
 	</thead>
 	
