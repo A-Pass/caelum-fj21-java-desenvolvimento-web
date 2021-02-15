@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Lista de terefas</title>
 <script src="<c:url value="/resources/js/jquery-3.5.1.min.js" />"></script>
 
 <script>
@@ -14,9 +14,9 @@ function finalizaTarefa(id) {
 	})
 }
 
-function removeTarefa(el) {
+function removeTarefa(id) {
 	$.get('removeTarefa', {id}, function() {
-		$(this).closest("tr").remove();
+		$('#tarefa_' + id).remove();
 	})
 }
 </script>
