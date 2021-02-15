@@ -2,14 +2,18 @@ package br.com.caelum.tarefas.modelo;
 
 import java.util.Calendar;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-
+@Entity
 public class Tarefa {
 
-	
+	@Id
+	@GeneratedValue
 	private Long id;
 	
 	@Size(min=5)
