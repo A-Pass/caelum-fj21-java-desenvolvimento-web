@@ -17,18 +17,22 @@ import org.springframework.stereotype.Repository;
 import br.com.caelum.tarefas.modelo.Tarefa;
 
 @Repository
-public class JdbcTarefaDao {
-	private final Connection connection;
+public class JdbcTarefaDao implements TarefaDao {
+
+	private Connection connection;
 
 	@Autowired
 	public JdbcTarefaDao(DataSource dataSource) {
+
 		try {
 			this.connection = dataSource.getConnection();
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
+
 	}
 
+	@Override
 	public void adiciona(Tarefa tarefa) {
 		String sql = "insert into tarefas (descricao, finalizado) values (?,?)";
 		PreparedStatement stmt;
@@ -42,6 +46,7 @@ public class JdbcTarefaDao {
 		}
 	}
 
+	@Override
 	public void remove(Tarefa tarefa) {
 
 		if (tarefa.getId() == null) {
@@ -59,6 +64,7 @@ public class JdbcTarefaDao {
 		}
 	}
 
+	@Override
 	public void altera(Tarefa tarefa) {
 		String sql = "update tarefas set descricao = ?, finalizado = ?, dataFinalizacao = ? where id = ?";
 		PreparedStatement stmt;
@@ -76,6 +82,7 @@ public class JdbcTarefaDao {
 		}
 	}
 
+	@Override
 	public List<Tarefa> lista() {
 		try {
 			List<Tarefa> tarefas = new ArrayList<Tarefa>();
@@ -97,6 +104,7 @@ public class JdbcTarefaDao {
 		}
 	}
 
+	@Override
 	public Tarefa buscaPorId(Long id) {
 
 		if (id == null) {
@@ -122,6 +130,7 @@ public class JdbcTarefaDao {
 		}
 	}
 
+	@Override
 	public void finaliza(Long id) {
 
 		if (id == null) {

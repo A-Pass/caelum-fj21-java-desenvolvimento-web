@@ -16,5 +16,5 @@
 </td>
 <td>
 	<a href="#" onclick="removeTarefa(${tarefa.id})">Remover</a>
-	<a href="mostraTarefa?id=${tarefa.id}" ">Alterar</a>
+	<a href="mostraTarefa?id=${tarefa.id}">Alterar</a>
 </td>

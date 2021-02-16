@@ -1,8 +1,33 @@
 package br.com.caelum.tarefas.modelo;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
 public class Usuario {
+
+	@Id
+	@GeneratedValue
+	private Long id;
+
 	private String login;
+
 	private String senha;
+
+	/**
+	 * @return the id
+	 */
+	public Long getId() {
+		return id;
+	}
+
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(Long id) {
+		this.id = id;
+	}
 
 	public String getLogin() {
 		return login;
